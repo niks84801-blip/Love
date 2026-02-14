@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Forever Valentine ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg,#ff758c,#ff7eb3);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* title */
+.title{
+font-size:26px;
+margin-top:20px;
+text-shadow:0 0 15px white;
+}
+
+/* slideshow */
+.slideshow{
+width:260px;
+height:340px;
+margin:20px auto;
+position:relative;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 0 25px rgba(255,255,255,0.7);
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+opacity:0;
+transition:1s;
+}
+
+.slide img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:20px;
+}
+
+.active{
+opacity:1;
+}
+
+/* message */
+.message{
+font-family: Arial, sans-serif;
+font-size:16px;
+line-height:1.6;
+background: rgba(255,255,255,0.2);
+padding:15px;
+margin:20px;
+border-radius:15px;
+}
+
+/* buttons */
+.buttons{
+margin-top:20px;
+position:relative;
+height:120px;
+}
+
+.btn{
+background:red;
+color:white;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+font-size:16px;
+margin:10px;
+cursor:pointer;
+box-shadow:0 0 15px red;
+}
+
+#noBtn{
+background:black;
+position:absolute;
+left:60%;
+}
+
+/* floating hearts */
+@keyframes fall{
+0%{
+transform:translateY(-100px);
+opacity:1;
+}
+100%{
+transform:translateY(100vh);
+opacity:0;
+}
+}
+
+.heart{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation: fall linear infinite;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="title">
+Happy Valentine's Day My Love ❤️
+</div>
+
+<!-- slideshow -->
+<div class="slideshow">
+
+<div class="slide active">
+<img src="photo1.jpg">
+</div>
+
+<div class="slide">
+<img src="photo2.jpg">
+</div>
+
+<div class="slide">
+<img src="photo3.jpg">
+</div>
+
+<div class="slide">
+<img src="photo4.jpg">
+</div>
+
+<div class="slide">
+<img src="photo5.jpg">
+</div>
+
+</div>
+
+<!-- message -->
+<div class="message">
+
+baby mujhe pta h ki tm bs mere ho but fir bhi puchhna to bnta h na ...
+will u be my valentine forever.. hmesa ke liye...
+or hum kbhi bhi tmko kisi or se replace nhi krna chahte..... I love youuuuuuuu 🌹🫂♥️🧿.....
+pta h hmara bht jhagda hota h lekin kuchh bhi ho jye last me aana to tmhare pss hee h naa
+pta nhi kaise itna chipak gye ho mere dil se.....
+I love you sweetheart 💋😘😘
+
+You are my forever, my always, my everything ❤️
+
+</div>
+
+<h3>Our Song 🎵</h3>
+
+<!-- Spotify player -->
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/track/5bHDGWyIFML1LYXZWTD5MF"
+width="300"
+height="80"
+frameborder="0"
+allow="autoplay; encrypted-media;">
+</iframe>
+
+<!-- proposal buttons -->
+<div class="buttons">
+
+<button class="btn" id="yesBtn" onclick="yesClicked()">
+YES ❤️
+</button>
+
+<button class="btn" id="noBtn"
+onmouseover="moveNoButton()"
+onclick="noClicked()">
+NO 😄
+</button>
+
+</div>
+
+<script>
+
+/* slideshow */
+let slides=document.querySelectorAll(".slide");
+let index=0;
+
+setInterval(()=>{
+
+slides[index].classList.remove("active");
+
+index=(index+1)%slides.length;
+
+slides[index].classList.add("active");
+
+},3000);
+
+
+/* YES click */
+function yesClicked(){
+
+alert("YAYYYYY ❤️ I LOVE YOU FOREVER 💍");
+
+createHeartExplosion();
+
+}
+
+
+/* NO click → YES grows */
+let yesSize=16;
+
+function noClicked(){
+
+let yesBtn=document.getElementById("yesBtn");
+
+yesSize+=5;
+
+yesBtn.style.fontSize=yesSize+"px";
+
+yesBtn.style.padding="15px 30px";
+
+}
+
+
+/* NO button runs away */
+function moveNoButton(){
+
+let btn=document.getElementById("noBtn");
+
+btn.style.left=Math.random()*250+"px";
+
+btn.style.top=Math.random()*80+"px";
+
+}
+
+
+/* heart explosion */
+function createHeartExplosion(){
+
+for(let i=0;i<30;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="💖";
+
+heart.style.position="fixed";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.top=Math.random()*100+"vh";
+
+heart.style.fontSize="30px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),2000);
+
+}
+
+}
+
+
+/* falling hearts background */
+function createHeart(){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(createHeart,400);
+
+</script>
+
+</body>
+</html>
